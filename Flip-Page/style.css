@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Host Grotesk", sans-serif;
+}
+html,body{
+    height:100%;
+    width: 100%;
+}
+#main{
+    min-height: 100%;
+    max-height: fit-content;
+    width:100%;
+    background-color: rgb(12, 12, 12);
+    overflow: hidden;
+}
+.box{
+    width:15rem;
+    height:15rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.7s all ease;
+    background-color: #ff7978;
+    position: absolute;
+    top: -8.2rem;
+    left: -8.2rem;
+    z-index:1;
+}
+.box>.upper{
+    height:50%;
+    width:100%;
+}
+.box>.lower{
+    height:50%;
+    width:100%;
+    display: flex;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+.box>.lower>.child1{
+    height:100%;
+    width:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box>.lower>.child2{
+    height:100%;
+    width:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.article{
+    min-height:100vh;
+    max-width:100vw;
+    background-color: #f4f6f1;
+    padding: 6rem 8rem;
+    color: rgba(0, 0, 0, 0.878);
+    display: flex;
+    flex-direction: column;
+    gap:1.5vh;
+    z-index: -1;
+    transition: 0.7s all ease;
+}
+.article-twist{
+    transform: translateX(20%) translateY(-15%);
+    rotate: -22deg;
+}
+.article>p{
+    max-height: fit-content;
+    font-size: large;
+    width:100%;
+    display: flex;
+}
+.nav{
+    color: white;
+    position: fixed;
+    z-index: 1;
+    top: 62%;
+    left: 0%;
+    opacity: 0;
+    transition: 0.7s all ease;
+    mix-blend-mode: difference;
+}
+.nav ul{
+    list-style: none;
+    list-style-type: none;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap:0.8rem;
+}
+@media (max-width:900px){
+    .article{
+        padding: 6rem 2rem;
+    }
+    .article-twist{
+        transform: translateX(15%) translateY(-15.5%);
+        rotate:13deg;
+    }
+    .nav{
+        top: 30%;
+    }
+}
