@@ -1,0 +1,1 @@
+This is a repository that I use for my personal learning and improving my understanding in JS by making some small and cool projects that might not be usefull for mankind but I personally enjoy making these kinds of things and indeed they truly hlep me to get by roots strong on JS.
