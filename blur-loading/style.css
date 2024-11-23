@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Funnel+Display:wght@300..800&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",serif;
+}
+html,body{
+    height:100%;
+    width: 100%;
+}
+#main{
+    min-height: 100vh;
+    width:100%;
+    background: url('https://images.unsplash.com/photo-1576161787924-01bb08dad4a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2104&q=80')
+    no-repeat center center/cover;
+    position: relative;
+    z-index: 5;
+}
+.overlay{
+    height: 100%;
+    width:100%;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    backdrop-filter: blur(50px);
+    transition: 0.1s all ease;
+    z-index: 10;
+}
+.load-percent{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:100%;
+    height:fit-content;
+    font-size: 5rem;
+    text-transform: uppercase;
+    color:white;
+    text-align: center;
+    z-index: 100;
+    transition: 0.1s all ease;
+}
