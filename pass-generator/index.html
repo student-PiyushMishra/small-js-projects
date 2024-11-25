@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="main">
+        <div class="app">
+            <h3>Password Generator</h3>
+            <div class="ps">
+                <input type="text" max="20" readonly>
+                <div class="copy"><i class="ri-file-copy-line"></i></div>
+            </div>
+            <div class="demands" style="margin-top: 2%;">
+                <p>Password Length</p>
+                <input type="number" class="length" min="4" max="20" value="20">
+            </div>
+            <div class="demands">
+                <p>Include Uppercase Letters</p>
+                <input class="upper" type="checkbox" checked>
+            </div>
+            <div class="demands">
+                <p>Include Lowercase Letters</p>
+                <input class="lower" type="checkbox" checked>
+            </div>
+            <div class="demands">
+                <p>Include Numbers</p>
+                <input class="number" type="checkbox" checked>
+            </div>
+            <div class="demands">
+                <p>Include Symbols</p>
+                <input class="symbol" type="checkbox" checked>
+            </div>
+            <button>Generate Password</button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
