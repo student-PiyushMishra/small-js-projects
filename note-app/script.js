@@ -38,7 +38,7 @@ const addNoteCmds = (note) => {
 
     note.querySelector(".edit").addEventListener("click", function () {
         const textarea = note.querySelector("textarea");
-        textarea.disabled = !textarea.disabled; // Toggle editing
+        textarea.disabled = !textarea.disabled;
     });
 
     note.querySelector(".delete").addEventListener("click", function () {
