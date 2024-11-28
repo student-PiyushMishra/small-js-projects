@@ -14,8 +14,6 @@ const game = () => {
 
     const increaseHeight = () => {
         if (gameOver == true) { return; };
-        audio.pause();
-        audio.currentTime = 0;
         audio.src = "assets/move.mp3";
         audio.play();
         speed = 1.8;
@@ -121,6 +119,9 @@ const game = () => {
                 !obstacle.hasAttribute("scored") // Ensure each obstacle is scored only once
             ) {
                 obstacle.setAttribute("scored", "true");
+                audio.pause()
+                audio.src = 'assets/score-plus.mp3';
+                audio.play()
                 score++;
                 score_btn.textContent = score;
             }
