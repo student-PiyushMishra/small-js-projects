@@ -18,6 +18,9 @@ body {
     width: 100%;
     background-color: rgb(25, 159, 90);
     position: relative;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 nav {

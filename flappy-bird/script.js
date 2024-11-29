@@ -67,7 +67,7 @@ const game = () => {
         let obstacleLeft = window.innerWidth;
 
         const move = () => {
-            obstacleLeft -= obstacleSpeed; // Move the obstacle leftward
+            obstacleLeft -= obstacleSpeed;
             obstacle.style.left = `${obstacleLeft}px`;
 
             if (obstacleLeft + obstacle.offsetWidth < 0) {
@@ -91,7 +91,7 @@ const game = () => {
             const topPipeRect = obstacle.querySelector('.top-pipe').getBoundingClientRect();
             const bottomPipeRect = obstacle.querySelector('.bottom-pipe').getBoundingClientRect();
 
-            // Detect collision with top pipe
+            
             if (
                 birdRect.right > topPipeRect.left &&
                 birdRect.left < topPipeRect.right &&
@@ -99,10 +99,10 @@ const game = () => {
             ) {
                 gameOver = true;
                 stopGame()
-                return; // Stop further checks
+                return;
             }
 
-            // Detect collision with bottom pipe
+            
             if (
                 birdRect.right > bottomPipeRect.left &&
                 birdRect.left < bottomPipeRect.right &&
@@ -110,16 +110,15 @@ const game = () => {
             ) {
                 gameOver = true;
                 stopGame()
-                return; // Stop further checks
+                return;
             }
 
-            // Increase score if no collision
+            
             if (
-                birdRect.right > topPipeRect.right && // Bird has passed the pipe
-                !obstacle.hasAttribute("scored") // Ensure each obstacle is scored only once
+                birdRect.right > topPipeRect.right &&
+                !obstacle.hasAttribute("scored")
             ) {
                 obstacle.setAttribute("scored", "true");
-                audio.pause()
                 audio.src = 'assets/score-plus.mp3';
                 audio.play()
                 score++;
@@ -130,6 +129,12 @@ const game = () => {
     };
 
     const stopGame = () => {
+        let existingObstacles = document.querySelectorAll(".obstacle");
+        setTimeout(() => {
+            existingObstacles.forEach(obstacle => {
+                obstacle.remove();
+            }) 
+        }, 1000);
         cancelAnimationFrame(gravityOnBall);
         cancelAnimationFrame(createObstacles);
         cancelAnimationFrame(moveObstacle);
@@ -155,6 +160,10 @@ const game = () => {
     createObstacles();
     checkCollisionOrIncreaseScore()
     document.addEventListener("click", increaseHeight);
+    document.addEventListener("keyup",function(event){
+        if(!(event.key == "ArrowUp")){return;}
+        else{increaseHeight()}
+    })
 }
 
 
@@ -199,13 +208,13 @@ const loader = () => {
 
 const stats = () => {
     const statsDiv = document.querySelector(".stats");
-    
+
     // Ensure the stats div is hidden before setting new content
     statsDiv.style.left = `0%`;
 
     // Clear the previous content before adding new stats
     statsDiv.innerHTML = "";
-    
+
     // Add new stats and the "Play Again" button
     const score = document.querySelector(".score button").textContent;
     statsDiv.innerHTML = `<h1>Your Score is: ${score}</h1><button>Play Again</button>`;
