@@ -154,6 +154,7 @@ const game = () => {
         setTimeout(() => {
             stats();
         }, 1700);
+        document.querySelector(".score button").textContent = 0;
     }
 
     gravityOnBall();
