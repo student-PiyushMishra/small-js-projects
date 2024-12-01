@@ -1,5 +1,6 @@
 const audio = new Audio();
 const game = () => {
+    document.querySelector(".score button").textContent = 0;
     audio.src = "assets/game-start.mp3";
     audio.play();
     const bird = document.querySelector(".bird");
@@ -154,7 +155,6 @@ const game = () => {
         setTimeout(() => {
             stats();
         }, 1700);
-        document.querySelector(".score button").textContent = 0;
     }
 
     gravityOnBall();
