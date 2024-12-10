@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html,body{
+    height:100%;
+    width: 100%;
+}
+#main{
+    min-height: 100vh;
+    width:100%;
+    background-color: #3394e3;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+    padding: 2rem 0rem;
+    color:white;
+    text-align: center;
+}
+#main .sec-1{
+    width:100%;
+    height:fit-content;
+    gap:1rem;
+}
+#main .sec-1>h1{
+    font-weight: 500;
+    font-size: xx-large;
+}
+#main .sec-1>h3{
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+.container{
+    width:70%;
+    max-width: 150px;
+    height:320px;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    border: 3.5px solid #1a4fb5;
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+    background-color: white;
+}
+.container .remains{
+    width:100%;
+    height:100%;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items:center;
+    justify-content: center;
+    transition-duration: 0.5s;
+}
+.container .remains #remaining-water{
+    color:#30418f;
+    font-weight: 500;
+    font-size: large;
+}
+.container .remains #txt{
+    color:gray;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+}
+.container .fill{
+    width:100%;
+    height:0%;
+    background-color: lightblue;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items:center;
+    justify-content: center;
+    color:#1a4fb5;
+    font-size: 1.8rem;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+.txts h3{
+    text-align: center;
+    width:100%;
+    font-weight:400;
+}
+.glasses{
+    max-height: max-content;
+    max-width: 350px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.glass{
+    height:100px;
+    width:60px;
+    background-color: white;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    border: 4px solid #1a4fb5;
+    font-size: medium;
+    font-weight: 100;
+    text-overflow: wrap;
+    color:gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:0.4s all ease;
+}
+.glass.fill{
+    background-color: lightblue;
+    color:black;
+}
