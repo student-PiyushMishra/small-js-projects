@@ -21,7 +21,6 @@ textarea.addEventListener("input",(event)=>{
         }
     }
 })
-
 textarea.addEventListener("keyup",(event)=>{
     if(event.key.toLowerCase() === "enter"){
         if(textarea.value === "\n"){
