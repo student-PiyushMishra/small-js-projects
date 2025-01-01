@@ -5,6 +5,8 @@ let backQue = document.querySelector(".left");
 let data = [];
 let askedQuestions = [];
 let questionNum = 0;
+let answeredArray = [];
+let answeredQuestions = [];
 
 function fetchData() {
     return fetch('questions.json')
@@ -33,12 +35,24 @@ const loggingQuestions = async () => {
     }
 }
 
+const renderAnsweredQuestion = () => {
+    if (answeredQuestions.includes(parseInt(questionDiv.textContent.split(".")[0]))) {
+        optionsArr.forEach((val, index) => {
+            if (val.textContent == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answer) {
+                val.classList.add('correct');
+            }
+        })
+    }
+    requestAnimationFrame(renderAnsweredQuestion);
+}
+
 const creatingQuestions = () => {
     if (data.length === 0) {
         return;
     }
     let question = data[Math.floor(Math.random() * data.length)];
-    shuffleArrays(question.options)
+    shuffleArrays(question.options);
+    question.answered = false;
     data.splice(data.indexOf(question), 1);
     askedQuestions.push(question);
     return;
@@ -60,22 +74,39 @@ function reverseQuestion() {
 
 function validatingAnswers() {
     document.querySelector(".options").addEventListener("click", function (e) {
+        if (answeredQuestions.includes(questionNum)) {
+            return;
+        }
         let question = askedQuestions[questionNum - 1];
+        let target = e.target.closest(".option");
+        question.answered = true;
+        let obj = { question: question.question, options: question.options, answer: question.answer, answerGiven: target.querySelector('.txt').textContent };
+        answeredArray.push(obj);
+        answeredQuestions.push(questionNum);
+        console.log(answeredQuestions);
+        console.log(answeredArray)
         if (questionNum == 0) {
             question = askedQuestions[questionNum];
         }
-        console.log(questionNum)
         optionsArr.forEach((val, index) => {
-            
+            if (val.textContent == question.answer) {
+                val.querySelector('i').classList.remove('ri-circle-line');
+                val.querySelector('i').classList.add('ri-checkbox-circle-fill');
+                val.classList.add('correct');
+            }
         })
-        let target = e.target.closest(".option");
+        if (target.querySelector('.txt').textContent != question.answer) {
+            target.querySelector('i').classList.remove('ri-circle-line');
+            target.querySelector('i').classList.add('ri-close-circle-fill');
+            target.classList.add('incorrect');
+        }
     })
 }
 
 function shuffleArrays(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i],array[j]] = [array[j],array[i]];
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
@@ -85,7 +116,8 @@ const app = async () => {
     window.addEventListener("load", loggingQuestions);
     nextQue.addEventListener('click', loggingQuestions);
     backQue.addEventListener('click', reverseQuestion);
-    validatingAnswers()
+    validatingAnswers();
+    renderAnsweredQuestion();
 }
 
 app();
