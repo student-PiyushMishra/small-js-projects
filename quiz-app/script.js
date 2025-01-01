@@ -20,10 +20,12 @@ async function fetchingData() {
 }
 
 const loggingQuestions = async () => {
-    creatingQuestions();
+    if(questionNum == askedQuestions.length){
+        creatingQuestions();
+    }
     if (questionNum < askedQuestions.length) {
         let question = askedQuestions[questionNum];
-        questionDiv.textContent = `${questionNum + 1}. ${question.question}`;
+        questionDiv.textContent = `${questionNum+1}. ${question.question}`;
         optionsArr.forEach((val, index) => {
             val.querySelector('.txt').textContent = question.options[index];
         });
@@ -43,9 +45,12 @@ const creatingQuestions = () => {
 
 function reverseQuestion() {
     if (questionNum > 0) {
+        if(questionNum == 1){
+            return;
+        }
         questionNum--;
-        let question = askedQuestions[questionNum];
-        questionDiv.textContent = `${questionNum + 1}. ${question.question}`;
+        let question = askedQuestions[questionNum-1];
+        questionDiv.textContent = `${questionNum}. ${question.question}`;
         optionsArr.forEach((val, index) => {
             val.querySelector('.txt').textContent = question.options[index];
         });
@@ -58,6 +63,10 @@ const app = async () => {
     window.addEventListener("load", loggingQuestions);
     nextQue.addEventListener('click', loggingQuestions);
     backQue.addEventListener('click', reverseQuestion);
+
+    window.addEventListener('click',()=>{
+        console.log(questionNum)
+    })
 }
 
 app();
