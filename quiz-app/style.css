@@ -49,6 +49,7 @@ html,body{
     padding: 1em;
     display:flex;
     flex-direction: column;
+    gap: 1em;
 }
 .options .option{
     align-items: center;
@@ -58,6 +59,7 @@ html,body{
     gap: 1em;
     font-size: larger;
     cursor: pointer;
+    user-select:none;
     -webkit-user-select: none;
     cursor: pointer;
 }
@@ -97,8 +99,6 @@ html,body{
     }
     .question{
         font-size: larger;
-    }
-    .options{
     }
     .options .option{
         font-size: medium;

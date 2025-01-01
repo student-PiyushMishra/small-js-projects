@@ -20,12 +20,12 @@ async function fetchingData() {
 }
 
 const loggingQuestions = async () => {
-    if(questionNum == askedQuestions.length){
+    if (questionNum == askedQuestions.length) {
         creatingQuestions();
     }
     if (questionNum < askedQuestions.length) {
         let question = askedQuestions[questionNum];
-        questionDiv.textContent = `${questionNum+1}. ${question.question}`;
+        questionDiv.textContent = `${questionNum + 1}. ${question.question}`;
         optionsArr.forEach((val, index) => {
             val.querySelector('.txt').textContent = question.options[index];
         });
@@ -38,6 +38,7 @@ const creatingQuestions = () => {
         return;
     }
     let question = data[Math.floor(Math.random() * data.length)];
+    shuffleArrays(question.options)
     data.splice(data.indexOf(question), 1);
     askedQuestions.push(question);
     return;
@@ -45,11 +46,11 @@ const creatingQuestions = () => {
 
 function reverseQuestion() {
     if (questionNum > 0) {
-        if(questionNum == 1){
+        if (questionNum == 1) {
             return;
         }
         questionNum--;
-        let question = askedQuestions[questionNum-1];
+        let question = askedQuestions[questionNum - 1];
         questionDiv.textContent = `${questionNum}. ${question.question}`;
         optionsArr.forEach((val, index) => {
             val.querySelector('.txt').textContent = question.options[index];
@@ -57,16 +58,34 @@ function reverseQuestion() {
     }
 }
 
+function validatingAnswers() {
+    document.querySelector(".options").addEventListener("click", function (e) {
+        let question = askedQuestions[questionNum - 1];
+        if (questionNum == 0) {
+            question = askedQuestions[questionNum];
+        }
+        console.log(questionNum)
+        optionsArr.forEach((val, index) => {
+            
+        })
+        let target = e.target.closest(".option");
+    })
+}
+
+function shuffleArrays(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i],array[j]] = [array[j],array[i]];
+    }
+    return array;
+}
 
 const app = async () => {
     await fetchingData();
     window.addEventListener("load", loggingQuestions);
     nextQue.addEventListener('click', loggingQuestions);
     backQue.addEventListener('click', reverseQuestion);
-
-    window.addEventListener('click',()=>{
-        console.log(questionNum)
-    })
+    validatingAnswers()
 }
 
 app();
