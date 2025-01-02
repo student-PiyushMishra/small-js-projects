@@ -9,7 +9,7 @@ let answeredArray = [];
 let answeredQuestions = [];
 
 function fetchData() {
-    return fetch('questions.json')
+    return fetch('data/questions.json')
         .then(response => response.json())
         .then(JSONdata => {
             data = JSONdata;
@@ -105,8 +105,6 @@ function validatingAnswers() {
         let obj = { question: question.question, options: question.options, answer: question.answer, answerGiven: target.querySelector('.txt').textContent };
         answeredArray.push(obj);
         answeredQuestions.push(questionNum);
-        console.log(answeredQuestions);
-        console.log(answeredArray);
         if (questionNum == 0) {
             question = askedQuestions[questionNum];
         }
