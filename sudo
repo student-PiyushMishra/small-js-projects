@@ -1,0 +1,64 @@
+[1mdiff --git a/quiz-app/script.js b/quiz-app/script.js[m
+[1mindex 524ea73..ddfd394 100644[m
+[1m--- a/quiz-app/script.js[m
+[1m+++ b/quiz-app/script.js[m
+[36m@@ -39,8 +39,29 @@[m [mconst renderAnsweredQuestion = () => {[m
+     if (answeredQuestions.includes(parseInt(questionDiv.textContent.split(".")[0]))) {[m
+         optionsArr.forEach((val, index) => {[m
+             if (val.textContent == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answer) {[m
+[32m+[m[32m                val.querySelector('i').classList.remove('ri-circle-line');[m
+[32m+[m[32m                val.querySelector('i').classList.add('ri-checkbox-circle-fill');[m
+                 val.classList.add('correct');[m
+             }[m
+[32m+[m[32m            else{[m
+[32m+[m[32m                val.classList = 'option';[m
+[32m+[m[32m                val.querySelector('i').classList = 'ri-circle-line'[m
+[32m+[m[32m            }[m
+[32m+[m[32m            if (val.textContent == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answerGiven) {[m
+[32m+[m[32m                if (answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answerGiven == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answer) { }[m
+[32m+[m[32m                else {[m
+[32m+[m[32m                    val.querySelector('i').classList.remove('ri-circle-line');[m
+[32m+[m[32m                    val.querySelector('i').classList.add('ri-close-circle-fill');[m
+[32m+[m[32m                    val.classList.add('incorrect');[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+[32m+[m[32m        })[m
+[32m+[m[32m    }[m
+[32m+[m[32m    else {[m
+[32m+[m[32m        optionsArr.forEach((val, index) => {[m
+[32m+[m[32m            if (val.classList.contains('correct')) val.classList.remove("correct");[m
+[32m+[m[32m            if (val.classList.contains('incorrect')) val.classList.remove("incorrect");[m
+[32m+[m[32m            val.querySelector('i').classList = 'ri-circle-line';[m
+         })[m
+     }[m
+     requestAnimationFrame(renderAnsweredQuestion);[m
+[36m@@ -52,7 +73,6 @@[m [mconst creatingQuestions = () => {[m
+     }[m
+     let question = data[Math.floor(Math.random() * data.length)];[m
+     shuffleArrays(question.options);[m
+[31m-    question.answered = false;[m
+     data.splice(data.indexOf(question), 1);[m
+     askedQuestions.push(question);[m
+     return;[m
+[36m@@ -79,12 +99,11 @@[m [mfunction validatingAnswers() {[m
+         }[m
+         let question = askedQuestions[questionNum - 1];[m
+         let target = e.target.closest(".option");[m
+[31m-        question.answered = true;[m
+         let obj = { question: question.question, options: question.options, answer: question.answer, answerGiven: target.querySelector('.txt').textContent };[m
+         answeredArray.push(obj);[m
+         answeredQuestions.push(questionNum);[m
+         console.log(answeredQuestions);[m
+[31m-        console.log(answeredArray)[m
+[32m+[m[32m        console.log(answeredArray);[m
+         if (questionNum == 0) {[m
+             question = askedQuestions[questionNum];[m
+         }[m
+[36m@@ -117,6 +136,7 @@[m [mconst app = async () => {[m
+     nextQue.addEventListener('click', loggingQuestions);[m
+     backQue.addEventListener('click', reverseQuestion);[m
+     validatingAnswers();[m
+[32m+[m[41m    [m
+     renderAnsweredQuestion();[m
+ }[m
+ [m

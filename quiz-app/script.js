@@ -33,16 +33,39 @@ const loggingQuestions = async () => {
         });
         questionNum++;
     }
+    renderAnsweredQuestion();
 }
 
 const renderAnsweredQuestion = () => {
     if (answeredQuestions.includes(parseInt(questionDiv.textContent.split(".")[0]))) {
         optionsArr.forEach((val, index) => {
             if (val.textContent == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answer) {
+                val.querySelector('i').classList.remove('ri-circle-line');
+                val.querySelector('i').classList.add('ri-checkbox-circle-fill');
                 val.classList.add('correct');
+            }
+            else {
+                val.classList = 'option';
+                val.querySelector('i').classList = 'ri-circle-line'
+            }
+            if (val.textContent == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answerGiven) {
+                if (answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answerGiven == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answer) { }
+                else {
+                    val.querySelector('i').classList.remove('ri-circle-line');
+                    val.querySelector('i').classList.add('ri-close-circle-fill');
+                    val.classList.add('incorrect');
+                }
             }
         })
     }
+    else {
+        optionsArr.forEach((val, index) => {
+            if (val.classList.contains('correct')) val.classList.remove("correct");
+            if (val.classList.contains('incorrect')) val.classList.remove("incorrect");
+            val.querySelector('i').classList = 'ri-circle-line';
+        })
+    }
+
     requestAnimationFrame(renderAnsweredQuestion);
 }
 
@@ -52,7 +75,6 @@ const creatingQuestions = () => {
     }
     let question = data[Math.floor(Math.random() * data.length)];
     shuffleArrays(question.options);
-    question.answered = false;
     data.splice(data.indexOf(question), 1);
     askedQuestions.push(question);
     return;
@@ -70,6 +92,7 @@ function reverseQuestion() {
             val.querySelector('.txt').textContent = question.options[index];
         });
     }
+    renderAnsweredQuestion();
 }
 
 function validatingAnswers() {
@@ -79,12 +102,11 @@ function validatingAnswers() {
         }
         let question = askedQuestions[questionNum - 1];
         let target = e.target.closest(".option");
-        question.answered = true;
         let obj = { question: question.question, options: question.options, answer: question.answer, answerGiven: target.querySelector('.txt').textContent };
         answeredArray.push(obj);
         answeredQuestions.push(questionNum);
         console.log(answeredQuestions);
-        console.log(answeredArray)
+        console.log(answeredArray);
         if (questionNum == 0) {
             question = askedQuestions[questionNum];
         }
