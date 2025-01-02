@@ -36,12 +36,25 @@ const loggingQuestions = async () => {
 }
 
 const renderAnsweredQuestion = () => {
-    if (answeredQuestions.includes(parseInt(questionDiv.textContent.split(".")[0]))) {
-        optionsArr.forEach((val, index) => {
-            if (val.textContent == answeredArray[answeredQuestions.indexOf(parseInt(questionDiv.textContent.split(".")[0]))].answer) {
+    optionsArr.forEach(val => {
+        val.classList = 'option';
+        val.querySelector('i').classList = 'ri-circle-line';
+    })
+    if (answeredQuestions.includes(questionNum)) {
+        optionsArr.forEach(val => {
+            if(val.querySelector('.txt').textContent == answeredArray[answeredQuestions.indexOf(questionNum)].answer){
                 val.classList.add('correct');
+                val.querySelector('i').classList = 'ri-checkbox-circle-fill';
             }
         })
+        if(answeredArray[answeredQuestions.indexOf(questionNum)].answer != answeredArray[answeredQuestions.indexOf(questionNum)].answerGiven){
+            optionsArr.forEach(val => {
+                if(val.querySelector('.txt').textContent == answeredArray[answeredQuestions.indexOf(questionNum)].answerGiven){
+                    val.classList.add('incorrect');
+                    val.querySelector('i').classList = `ri-close-circle-fill`
+                }
+            })
+        }
     }
     requestAnimationFrame(renderAnsweredQuestion);
 }
