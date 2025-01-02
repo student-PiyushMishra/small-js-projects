@@ -42,14 +42,14 @@ const renderAnsweredQuestion = () => {
     })
     if (answeredQuestions.includes(questionNum)) {
         optionsArr.forEach(val => {
-            if(val.querySelector('.txt').textContent == answeredArray[answeredQuestions.indexOf(questionNum)].answer){
+            if (val.querySelector('.txt').textContent == answeredArray[answeredQuestions.indexOf(questionNum)].answer) {
                 val.classList.add('correct');
                 val.querySelector('i').classList = 'ri-checkbox-circle-fill';
             }
         })
-        if(answeredArray[answeredQuestions.indexOf(questionNum)].answer != answeredArray[answeredQuestions.indexOf(questionNum)].answerGiven){
+        if (answeredArray[answeredQuestions.indexOf(questionNum)].answer != answeredArray[answeredQuestions.indexOf(questionNum)].answerGiven) {
             optionsArr.forEach(val => {
-                if(val.querySelector('.txt').textContent == answeredArray[answeredQuestions.indexOf(questionNum)].answerGiven){
+                if (val.querySelector('.txt').textContent == answeredArray[answeredQuestions.indexOf(questionNum)].answerGiven) {
                     val.classList.add('incorrect');
                     val.querySelector('i').classList = `ri-close-circle-fill`
                 }
@@ -126,7 +126,10 @@ function shuffleArrays(array) {
 
 const app = async () => {
     await fetchingData();
-    window.addEventListener("load", loggingQuestions);
+    loggingQuestions();
+    setTimeout(() => {
+        this.document.querySelector('.loader').style.top = '-100%';
+    }, 3000);
     nextQue.addEventListener('click', loggingQuestions);
     backQue.addEventListener('click', reverseQuestion);
     validatingAnswers();

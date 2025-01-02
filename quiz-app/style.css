@@ -115,6 +115,24 @@ body {
     transform: translateX(5px);
 }
 
+.loader{
+    height:100%;
+    width:100%;
+    position: absolute;
+    top: 0%;
+    z-index: 10;
+    background-color: black;
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: 700;
+    color:orangered;
+    text-shadow: 0px 0px 10px orangered;
+    transition: 1s all ease;
+}
+
 @media (max-width:1000px) {
     #main {
         padding: 0;
