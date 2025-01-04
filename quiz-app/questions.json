@@ -198,5 +198,105 @@
             "Tissue"
         ],
         "answer": "Cell"
+    },
+    {
+        "question": "The book Delhi is not far is written by which of these authors?",
+        "options": [
+            "Khushwant Singh",
+            "Anita Desai", 
+            "Arundhati Roy",
+            "Ruskin Bond "
+        ],                                      
+        "answer": "Ruskin Bond"
+    },
+    {
+        "question": "Book 'A brief history of time' is written by:",
+        "options": [
+            "John Green",
+            "J.K Rowling", 
+            "Suzame Colling",
+            "Stephen Hawking"
+        ],                                      
+        "answer": "Stephen Hawking"
+    },
+    {
+        "question": "'Long Walk to Freedom' is an autobiography of:",
+        "options": [
+            "Kofi Annan",
+            "John F Kennedy", 
+            "Nelson Mandela",
+            "Abrahm Linkon"
+        ],                                      
+        "answer": "Nelson Mandela"
+    },
+    {
+        "question": "To scale Mount Everest, mountaineers need to go to _____ ?",
+        "options": [
+            "Afghanistan",
+            "Bhutan", 
+            "Nepal",
+            "Myanmmar"
+        ],                                      
+        "answer": "Nepal"
+    },
+    {
+        "question": "New Delhi's Lotus Temple was designed by an architect from _____ ?",
+        "options": [
+            "Germany",
+            "Iran", 
+            "UAE",
+            "Japan"
+        ],                                      
+        "answer": "Iran"
+    },
+    {
+        "question": "In Vienna, there's a statue of Indian hockey player _____ holding four hockey sticks in four Hands ?",
+        "options": [
+            "Dhyan Chand",
+            "Dhanraj Pillay", 
+            "Udham Singh Kular",
+            "Bharat Kumar Chettri"
+        ],                                      
+        "answer": "Dhyan Chand"
+    },
+    {
+        "question": "In the context of NITI Aayog, what does ' T' stand for in NITI ?",
+        "options": [
+            "Travelling",
+            "Training", 
+            "Transforming",
+            "Transferring"
+        ],                                      
+        "answer": "Transforming"
+    },
+    {
+        "question": "What does the 'T' stand for in ATM?",
+        "options": [
+            "Teller",
+            "Trunk", 
+            "Translation",
+            "Transfer"
+        ],                                      
+        "answer": "Teller"
+    },
+    {
+        "question": "In the context of banking sector, what does 'F' stand for in IFSC?",
+        "options": [
+            "Functional",
+            "Forum", 
+            "Fiscal",
+            "Financial"
+        ],                                      
+        "answer": "Financial"
+    },
+    {
+        "question": "Wich of the following abbreviations related to categories of Indian Civil Serices is INCORRECT?",
+        "options": [
+            "IAS",
+            "ICS", 
+            "IPS",
+            "IFS"
+        ],                                      
+        "answer": "ICS"
     }
 ]
